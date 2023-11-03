@@ -2,7 +2,10 @@ package angelomoreno.progetto_diciasettesima_settimana.entities;
 
 import angelomoreno.progetto_diciasettesima_settimana.enums.TipoPostazione;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -12,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @ToString
-@Builder(builderClassName = "PostazioneBuilder")
+//@Builder(builderClassName = "PostazioneBuilder")
 public class Postazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

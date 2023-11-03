@@ -1,7 +1,10 @@
 package angelomoreno.progetto_diciasettesima_settimana.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -11,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @ToString
-@Builder(builderClassName = "EdificioBuilder")
+//@Builder(builderClassName = "EdificioBuilder")
 public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

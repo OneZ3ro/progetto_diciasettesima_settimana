@@ -1,6 +1,6 @@
 package angelomoreno.progetto_diciasettesima_settimana;
 
-import angelomoreno.progetto_diciasettesima_settimana.dao.IUtenteDAO;
+import angelomoreno.progetto_diciasettesima_settimana.dao.utente.IUtenteDAO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

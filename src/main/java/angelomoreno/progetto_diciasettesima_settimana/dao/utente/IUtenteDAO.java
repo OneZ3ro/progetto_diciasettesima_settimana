@@ -1,4 +1,4 @@
-package angelomoreno.progetto_diciasettesima_settimana.dao;
+package angelomoreno.progetto_diciasettesima_settimana.dao.utente;
 
 import angelomoreno.progetto_diciasettesima_settimana.entities.Utente;
 import angelomoreno.progetto_diciasettesima_settimana.enums.TipoPostazione;
