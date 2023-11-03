@@ -6,7 +6,7 @@ import angelomoreno.progetto_diciasettesima_settimana.enums.TipoPostazione;
 public interface IUtenteDAO {
     public void save(Utente utente);
 
-    public void findById(long id);
+    public Utente findById(long id);
 
     public void prenotaPostazione();
 

@@ -7,5 +7,5 @@ import java.util.UUID;
 public interface IPrenotazioneDAO {
     public void save(Prenotazione prenotazione);
 
-    public void findById(UUID id);
+    public Prenotazione findById(UUID id);
 }
