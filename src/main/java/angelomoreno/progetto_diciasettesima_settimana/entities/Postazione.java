@@ -4,6 +4,8 @@ import angelomoreno.progetto_diciasettesima_settimana.enums.TipoPostazione;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "postazioni")
 @NoArgsConstructor
@@ -20,13 +22,18 @@ public class Postazione {
     private TipoPostazione tipoPostazione;
     @Column(name = "max_occupanti")
     private long maxOccupanti;
+    @Column(name = "occupanti_corrente")
+    private long occupantiCorrente;
     @ManyToOne
     private Edificio edificio;
+    @OneToMany(mappedBy = "postazione")
+    private List<Prenotazione> prenotazioni;
 
-    public Postazione(String descrizione, TipoPostazione tipoPostazione, long maxOccupanti, Edificio edificio) {
+    public Postazione(String descrizione, TipoPostazione tipoPostazione, long maxOccupanti, long occupantiCorrente, Edificio edificio) {
         this.descrizione = descrizione;
         this.tipoPostazione = tipoPostazione;
         this.maxOccupanti = maxOccupanti;
+        this.occupantiCorrente = occupantiCorrente;
         this.edificio = edificio;
     }
 }
