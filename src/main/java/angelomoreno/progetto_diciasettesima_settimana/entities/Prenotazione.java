@@ -1,12 +1,11 @@
 package angelomoreno.progetto_diciasettesima_settimana.entities;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.UUID;
 
 @Entity
@@ -15,23 +14,35 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @ToString
-//@Builder(builderClassName = "PrenotazioneBuilder")
+@Builder(builderClassName = "PrenotazioneBuilder")
 public class Prenotazione {
     @Id
     @GeneratedValue
     @Column(name = "prenotazione_id")
     private UUID idPrenotazione;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Utente utente;
     @ManyToOne
+    @JoinColumn(name = "postazione", nullable = false)
     private Postazione postazione;
     private LocalDate dataRiservazione;
     private LocalDate dataDiPrenotazione;
 
-    public Prenotazione(Utente utente, Postazione postazione, LocalDate dataRiservazione) {
+    public void setUtente(Utente utente) {
         this.utente = utente;
+    }
+
+    public void setPostazione(Postazione postazione) {
         this.postazione = postazione;
+    }
+
+    public void setDataRiservazione(LocalDate dataRiservazione) {
         this.dataRiservazione = dataRiservazione;
-        this.dataDiPrenotazione = LocalDate.now();
+    }
+
+    public static class PrenotazioneBuilder {
+        private Faker faker = new Faker(Locale.ITALY);
+        private LocalDate dataDiPrenotazione = LocalDate.now();
     }
 }

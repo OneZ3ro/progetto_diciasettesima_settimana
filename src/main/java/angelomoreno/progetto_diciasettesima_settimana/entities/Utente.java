@@ -1,12 +1,11 @@
 package angelomoreno.progetto_diciasettesima_settimana.entities;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "utenti")
@@ -14,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @ToString
-//@Builder(builderClassName = "UtenteBuilder")
+@Builder(builderClassName = "UtenteBuilder")
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +26,11 @@ public class Utente {
     @OneToMany(mappedBy = "utente")
     private List<Prenotazione> prenotazioni;
 
-    public Utente(String username, String nome, String cognome, String email) {
-        this.username = username;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.email = email;
+    public static class UtenteBuilder {
+        private Faker faker = new Faker(Locale.ITALY);
+        private String username = faker.name().username();
+        private String nome = faker.name().firstName();
+        private String cognome = faker.name().lastName();
+        private String email = faker.internet().emailAddress();
     }
 }

@@ -1,12 +1,11 @@
 package angelomoreno.progetto_diciasettesima_settimana.entities;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "edifici")
@@ -14,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @ToString
-//@Builder(builderClassName = "EdificioBuilder")
+@Builder(builderClassName = "EdificioBuilder")
 public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +25,10 @@ public class Edificio {
     @OneToMany(mappedBy = "edificio")
     private List<Postazione> postazioni;
 
-    public Edificio(String nome, String indirizzo, String citta) {
-        this.nome = nome;
-        this.indirizzo = indirizzo;
-        this.citta = citta;
+    public static class EdificioBuilder {
+        private Faker faker = new Faker(Locale.ITALY);
+        private String nome = faker.gameOfThrones().dragon();
+        private String indirizzo = faker.address().fullAddress();
+        private String citta = faker.address().cityName();
     }
 }

@@ -26,7 +26,7 @@ public class UtenteService implements IUtenteDAO {
 
     @Override
     public void prenotaPostazione() {
-
+        
     }
 
     @Override
